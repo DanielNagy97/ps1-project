@@ -1,34 +1,69 @@
-/*
-===========================================================
-            Sony PlayStation 1 Example program
-===========================================================
-                         FONT EXAMPLE
-Displays text on the screen using the built in GPU routines
------------------------------------------------------------
-
-    Developer / Programmer..............: Daniel Nagy
-    Software Ddevelopment Kit...........: PSY-Q
-    Last Release........................: 17/OCTOBER/2022
-
-    Original code by SCEI and PSXDEV.net
-    
-	NOTE: This example uses double buffering!
------------------------------------------------------------*/
 #include <stdlib.h>
 #include <display.h>
+#include <controller.h>
 
+typedef struct {
+	POLY_F4 rect;
+	int x;
+	int y;
+	int velocity_x;
+	int velocity_y;
+} Pad;
 
-int main() 
-{
-	init_graphics();
-	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
-	SetDumpFnt(FntOpen(5, 20, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | automatic background clear 0,1 | max characters
+void initialize();
+void update(Pad* pad);
 
-	while (1)
-	{
-		FntPrint("Hello world!\n\n:-)");
+int main() {
+	LINE_F2 line;
+	Pad pad;
+
+	char text[100];
+
+	initialize();
+
+	line = init_line(64, 50, 150, 150);
+	pad.rect = init_rect(10, 10, 10, 50, 50, 10, 50, 50);
+	
+	while (1) {
+		update(&pad);
+		sprintf(text, "Hello world!\n\nx: %d(%d)\n\ny: %d(%d)", pad.x, pad.velocity_x, pad.y, pad.velocity_y);
+		FntPrint(text);
+		DrawPrim(&line);
+		DrawPrim(&pad.rect);
 		display();
 	}
 
 	return 0;
+}
+
+void initialize() {
+	init_graphics();
+	initializePad();
+	init_debugfont();
+	
+}
+
+void update(Pad* pad) {
+	int speed = 40;
+	padUpdate();
+	pad->velocity_x *= 0.95;
+	pad->velocity_y *= 0.95;
+	if(padCheck(Pad1Up)) {
+		pad->y = -1;
+		pad->velocity_y = speed;
+	}
+	if(padCheck(Pad1Down)) {
+		pad->y = 1;
+		pad->velocity_y = speed;
+	}
+	if(padCheck(Pad1Left)) {
+		pad->x = -1;
+		pad->velocity_x = speed;
+	}
+	if(padCheck(Pad1Right)) {
+		pad->x = 1;
+		pad->velocity_x = speed;
+	}
+	
+	move_rect(&pad->rect, pad->x, pad->y, pad->velocity_x, pad->velocity_y);
 }
