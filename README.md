@@ -7,7 +7,7 @@ Run-Time Library Reference: https://psx.arthus.net/sdk/Psy-Q/DOCS/Devrefs/Libref
 ## Projekt elindítása
 
 ## Előkészületek:
-A fejlesztés ANSI C nyelven és Windows XP virtulis gépen történik (mivel az SDKban található programok (és a 16 bites DOS-os toolok) nem kompatibilisek újabb windows verziókkal és tartalmaz 16 bites DOS programokat is.)
+A fejlesztés ANSI C nyelven és Windows XP virtulis gépen történik (mivel az SDKban található programok (és a 16 bites DOS-os toolok) nem kompatibilisek újabb windows verziókkal)
 
 1. Az SDK-t a következő helyre célszerű áthelyezni:
 ```text
