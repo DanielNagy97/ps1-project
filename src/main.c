@@ -18,7 +18,7 @@ int main() {
 	while (1) {
 		update(&element, 40, 0.95);
 
-		sprintf(text, "Hello world!\n\ndir_x: %d(%d)\n\ndir_y: %d(%d)", element.dir_x, element.velocity_x, element.dir_y, element.velocity_y);
+		sprintf(text, "Hello world!\n\ndir_x: %d(%d)\n\ndir_y: %d(%d)\n\nNellyke 2022", element.dir_x, element.velocity_x, element.dir_y, element.velocity_y);
 		FntPrint(text);
 
 		DrawPrim(&element.rect);

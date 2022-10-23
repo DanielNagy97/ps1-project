@@ -45,7 +45,7 @@ void init_graphics()
 
 void init_debugfont() {
 	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
-	SetDumpFnt(FntOpen(5, 5, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | automatic background clear 0,1 | max characters
+	SetDumpFnt(FntOpen(5, 10, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | automatic background clear 0,1 | max characters
 }
 
 LINE_F2 init_line(int x0, int y0, int x1, int y1) {
