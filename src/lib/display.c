@@ -45,7 +45,7 @@ void init_graphics()
 
 void init_debugfont() {
 	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
-	SetDumpFnt(FntOpen(5, 20, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | automatic background clear 0,1 | max characters
+	SetDumpFnt(FntOpen(5, 5, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | automatic background clear 0,1 | max characters
 }
 
 LINE_F2 init_line(int x0, int y0, int x1, int y1) {
@@ -64,14 +64,29 @@ POLY_F4 init_rect(int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3
 	return poly;
 }
 
-void move_rect(POLY_F4* poly, int x0, int y0, int velocity_x, int velocity_y) {
-	poly->x0 += (x0 * (velocity_x * 0.1));
-	poly->x1 += (x0 * (velocity_x * 0.1));
-	poly->x2 += (x0 * (velocity_x * 0.1));
-	poly->x3 += (x0 * (velocity_x * 0.1));
+void move_rect_by_vec(POLY_F4* poly, int move_x, int move_y) {	
+	poly->x0 += move_x;
+	poly->x1 += move_x;
+	poly->x2 += move_x;
+	poly->x3 += move_x;
 	
-	poly->y0 += (y0 * (velocity_y * 0.1));
-	poly->y1 += (y0 * (velocity_y * 0.1));
-	poly->y2 += (y0 * (velocity_y * 0.1));
-	poly->y3 += (y0 * (velocity_y * 0.1));
+	poly->y0 += move_y;
+	poly->y1 += move_y;
+	poly->y2 += move_y;
+	poly->y3 += move_y;
+}
+
+void move_rect_to_pos(POLY_F4* poly, int pos_x, int pos_y) {
+	int width = poly->x2 - poly->x0;
+	int height = poly->y1 - poly->y0;
+	
+	poly->x0 = pos_x;
+	poly->y0 = pos_y;
+	
+	poly->x1 = poly->x0;
+	poly->y1 = poly->y0 + height;
+	poly->x2 = poly->x0 + width;
+	poly->y2 = poly->y0;
+	poly->x3 = poly->x2;
+	poly->y3 = poly->y1;
 }

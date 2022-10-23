@@ -5,7 +5,7 @@
 CC = ccpsx
 CFLAGS = -O3 -Xo$80010000
 INCLUDE = -Isrc/include
-SOURCE = src/main.c src/lib/display.c
+SOURCE = src/main.c src/lib/display.c src/lib/engine.c
 OUTPUT = bin/main.cpe,bin/main.sym,bin/mem.map
 
 all:
