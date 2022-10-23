@@ -15,3 +15,13 @@ A `cpe2x` a lefordított .cpe fájlból futtatható EXE-t állít elő, amelyet 
 ```shell
 pcsxr -nogui -runcd bin/MAIN.EXE
 ```
+
+## ISO generálása:
+- bin\OtherTools\buildcd\BUILDCD (a reg file a PATH-hoz rendeli)
+- PSXLICENSE (http://www.psxdev.net/forum/viewtopic.php?t=704)
+- STRIPISO (http://www.psxdev.net/forum/viewtopic.php?f=60&t=997) - az SDK-hoz mellékelt valamiért nem működik...
+
+A cdrom jegyzékben található bat file legenerálja az ISO file-t és licenszeli is azt! Az elkészült ISO a `cdrom/build` jegyzékben lesz elérhető.
+```shell
+build_cd.bat
+```

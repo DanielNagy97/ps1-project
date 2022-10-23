@@ -2,3 +2,5 @@
 *.sym
 *.map
 *.EXE
+*.exe
+*.ISO
