@@ -17,12 +17,11 @@ void init_player_controller(PlayerController* player_controller, GameObject* pla
 void update_player_controller(PlayerController* player_controller) {
 	GameObject* game_object = player_controller->player_object;
 	update_pad();
-/*
+
 	if(padCheck(Pad1Up)) {
 		game_object->direction.y = -1;
 		game_object->velocity.y = game_object->speed;
 	}
-
 	if(padCheck(Pad1Down)) {
 		game_object->direction.y = 1;
 		game_object->velocity.y = game_object->speed;
@@ -35,7 +34,6 @@ void update_player_controller(PlayerController* player_controller) {
 		game_object->direction.x = 1;
 		game_object->velocity.x = game_object->speed;
 	}
-	*/
 }
 
 void cleanup_player_controller(PlayerController* player_controller) {

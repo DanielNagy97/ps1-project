@@ -2,6 +2,8 @@
 
 Rect new_rect(void) {
 	Rect rect;
+	Vector2D position;
+	rect.position = position;
 	rect.init = &init_rect2;
 	rect.update = &update_rect;
 	rect.cleanup = &cleanup_rect;
@@ -28,6 +30,7 @@ void init_rect2(Rect* rect, Vector2D position, int width, int height, RGBColor c
 }
 
 void update_rect(Rect* rect) {
+	// TODO: bug in move_to_pos at startup
 	move_to_pos(rect, rect->position);
 	DrawPrim(&rect->prim_rect);
 }

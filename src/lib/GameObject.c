@@ -2,6 +2,10 @@
 
 GameObject new_game_object(void) {
 	GameObject game_object;
+	Vector2D direction;
+	Vector2D velocity;
+	game_object.direction = direction;
+	game_object.velocity = velocity;
 	game_object.init = &init_game_object;
 	game_object.update = &update_game_object;
 	game_object.cleanup = &cleanup_game_object;
@@ -20,6 +24,7 @@ void init_game_object(GameObject* game_object, Rect* rect, int speed) {
 
 void update_game_object(GameObject* game_object) {
 	Rect* rect = game_object->rect;
+	update_game_object_position(game_object, 0.95);
 	rect->update(rect);
 }
 

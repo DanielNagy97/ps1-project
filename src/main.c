@@ -1,36 +1,27 @@
 #include <main.h>
 
 void initialize();
-void update(Element* element, int speed, float damping);
 
-int main() {	
-	Element element;
+int main() {
 	char text[100];
 	GameObject game_object = new_game_object();
-	
+	PlayerController player_controller = new_player_controller();
 	Rect rect = new_rect();
 	Vector2D position = {100, 60};
 	RGBColor color = {52, 235, 131};
-	rect.init(&rect, position, 40, 20, color);
 	
+	rect.init(&rect, position, 40, 20, color);
 	game_object.init(&game_object, &rect, 40);
-
+	player_controller.init(&player_controller, &game_object);
 
 	initialize();
-
-	element.rect = init_rect(10, 10, 10, 50, 50, 10, 50, 50); //top_left, bottom_left, top_right, bottom_right
-	element.width = element.rect.x2 - element.rect.x0;
-	element.height = element.rect.y1 - element.rect.y0;
 	
 	while (1) {
-		update(&element, 40, 0.95);
-		
 		game_object.update(&game_object);
+		player_controller.update(&player_controller);
 
-		sprintf(text, "Hello world!\n\ndir_x: %d(%d)\n\ndir_y: %d(%d)\n\nNellyke 2022", element.dir_x, element.velocity_x, element.dir_y, element.velocity_y);
+		sprintf(text, "Hello world!");
 		FntPrint(text);
-
-		DrawPrim(&element.rect);
 
 		display();
 	}
@@ -42,9 +33,4 @@ void initialize() {
 	init_graphics();
 	init_pad();
 	init_debugfont();
-}
-
-void update(Element* element, int speed, float damping) {
-	update_element_directions_with_pad(element, speed);
-	update_element_position(element, damping);
 }
