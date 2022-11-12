@@ -10,8 +10,6 @@ Rect new_rect(void) {
 
 void init_rect2(Rect* rect, Vector2D position, int width, int height, RGBColor color) {
 	POLY_F4 poly;
-	Vector2D direction;
-	Vector2D velocity;
 	
 	SetPolyF4(&poly);
 	setRGB0(&poly, color.red, color.green, color.blue);
@@ -23,15 +21,15 @@ void init_rect2(Rect* rect, Vector2D position, int width, int height, RGBColor c
 		position.x + width, position.y + height	// bottom_left.x, bottom_left.y
 	);
 
+	rect->position = position;
 	rect->prim_rect = poly;
 	rect->width = width;
 	rect->height = height;
-	rect->direction = direction;
-	rect->velocity = velocity;
 }
 
-void update_rect(Rect* rect, Vector2D position) {
-	move_to_pos(rect, position);
+void update_rect(Rect* rect) {
+	move_to_pos(rect, rect->position);
+	DrawPrim(&rect->prim_rect);
 }
 
 void cleanup_rect(Rect* rect) {
