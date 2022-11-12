@@ -1,4 +1,9 @@
+#ifndef ENGINE_H
+#define ENGINE_H
+
 #include <display.h>
+#include <libetc.h>
+#include <controller.h>
 
 typedef struct {
 	POLY_F4 rect;
@@ -12,3 +17,5 @@ typedef struct {
 
 void update_element_position(Element* element, float damping);
 void update_element_directions_with_pad(Element* element, int speed);
+
+#endif

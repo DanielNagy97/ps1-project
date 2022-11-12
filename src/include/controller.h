@@ -1,8 +1,5 @@
-//Thanks to ORION for his amazing PSX library.
-//This is almost directly taken from his library, from System.h and System.c.
-//A good resource from ORION -> http://onorisoft.free.fr/retro.htm?psx/tutorial/tuto.htm
-
-#include <libetc.h>
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 int	SysPad, SysPadT;
 #define	padCheck(_p_)	(SysPad & (_p_))
@@ -36,17 +33,8 @@ int	SysPad, SysPadT;
 #define Pad2Start		_PAD(1, PADstart)
 #define Pad2Select		_PAD(1, PADselect)
 
-void initializePad() {
-	PadInit(0);
-}
+void init_pad(void);
+void reset_pad(void);
+void update_pad(void);
 
-void padReset(void) {
-	SysPad = 0;
-	SysPadT = 0;
-}
-
-void padUpdate(void){
-	int	pad = PadRead(0);
-	SysPadT = pad & (pad ^ SysPad);
-	SysPad = pad;
-}
+#endif

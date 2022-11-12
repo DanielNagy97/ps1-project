@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <display.h>
-#include <engine.h>
+#include <main.h>
 
 void initialize();
 void update(Element* element, int speed, float damping);
@@ -31,7 +29,7 @@ int main() {
 
 void initialize() {
 	init_graphics();
-	initializePad();
+	init_pad();
 	init_debugfont();
 }
 

@@ -1,8 +1,8 @@
 #include <engine.h>
-#include <controller.h>
+
 
 void update_element_directions_with_pad(Element* element, int speed) {
-	padUpdate();
+	update_pad();
 
 	if(padCheck(Pad1Up)) {
 		element->dir_y = -1;
