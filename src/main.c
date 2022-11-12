@@ -9,7 +9,7 @@ int main() {
 
 	initialize();
 
-	element.rect = init_rect(10, 10, 10, 50, 50, 10, 50, 50);
+	element.rect = init_rect(10, 10, 10, 50, 50, 10, 50, 50); //top_left, bottom_left, top_right, bottom_right
 	element.width = element.rect.x2 - element.rect.x0;
 	element.height = element.rect.y1 - element.rect.y0;
 	
