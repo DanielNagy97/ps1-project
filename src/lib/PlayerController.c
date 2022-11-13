@@ -37,5 +37,8 @@ void update_player_controller(PlayerController* player_controller) {
 }
 
 void cleanup_player_controller(PlayerController* player_controller) {
-	
+	player_controller->player_object = NULL;
+	player_controller->init = NULL;
+	player_controller->update = NULL;
+	player_controller->cleanup = NULL;
 }

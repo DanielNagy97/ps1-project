@@ -1,9 +1,10 @@
 #include <GameObject.h>
 
+
 GameObject new_game_object(void) {
 	GameObject game_object;
-	Vector2D direction;
-	Vector2D velocity;
+	Vector2D direction = {1, 1};
+	Vector2D velocity = {0, 0};
 	game_object.direction = direction;
 	game_object.velocity = velocity;
 	game_object.init = &init_game_object;
@@ -13,26 +14,27 @@ GameObject new_game_object(void) {
 	return game_object;
 }
 
-void init_game_object(GameObject* game_object, Rect* rect, int speed) {
-	Vector2D direction;
-	Vector2D velocity;
+void init_game_object(GameObject* game_object, Rect* rect, int speed, float damping) {
 	game_object->rect = rect;
 	game_object->speed = speed;
-	game_object->direction = direction;
-	game_object->velocity = velocity;
+	game_object->damping = damping;
 }
 
 void update_game_object(GameObject* game_object) {
 	Rect* rect = game_object->rect;
-	update_game_object_position(game_object, 0.95);
+	update_game_object_position(game_object);
 	rect->update(rect);
 }
 
 void cleanup_game_object(GameObject* game_object) {
-
+	game_object->rect->cleanup(game_object->rect);
+	game_object->rect = NULL;
+	game_object->init = NULL;
+	game_object->update = NULL;
+	game_object->cleanup = NULL;
 }
 
-void update_game_object_position(GameObject* game_object, float damping) {
+void update_game_object_position(GameObject* game_object) {
 	int move_x;
 	int move_y;
 	int pos_x;
@@ -64,6 +66,6 @@ void update_game_object_position(GameObject* game_object, float damping) {
 	
 	rect->position = new_position;
 	
-	game_object->velocity.x *= damping;
-	game_object->velocity.y *= damping;
+	game_object->velocity.x *= game_object->damping;
+	game_object->velocity.y *= game_object->damping;
 }

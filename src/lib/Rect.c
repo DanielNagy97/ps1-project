@@ -1,5 +1,6 @@
 #include <Rect.h>
 
+
 Rect new_rect(void) {
 	Rect rect;
 	Vector2D position;
@@ -10,17 +11,18 @@ Rect new_rect(void) {
 	return rect;
 }
 
-void init_rect2(Rect* rect, Vector2D position, int width, int height, RGBColor color) {
+void init_rect2(Rect* rect, Vector2D position,
+				int width, int height, RGBColor color) {
 	POLY_F4 poly;
 	
 	SetPolyF4(&poly);
 	setRGB0(&poly, color.red, color.green, color.blue);
 	
 	setXY4(
-		&poly, position.x, position.y,			// top_left.x,    top_left.y,
-		position.x, position.y + height,		// bottom_left.x, bottom_left.y
-		position.x + width, position.y,			// top_right.x,   top_right.y,
-		position.x + width, position.y + height	// bottom_left.x, bottom_left.y
+		&poly, position.x, position.y,			// topl.x, topl.y,
+		position.x, position.y + height,		// botl.x, botl.y
+		position.x + width, position.y,			// topr.x, topr.y,
+		position.x + width, position.y + height	// botl.x, botl.y
 	);
 
 	rect->position = position;
@@ -30,7 +32,6 @@ void init_rect2(Rect* rect, Vector2D position, int width, int height, RGBColor c
 }
 
 void update_rect(Rect* rect) {
-	// TODO: bug in move_to_pos at startup
 	move_to_pos(rect, rect->position);
 	DrawPrim(&rect->prim_rect);
 }

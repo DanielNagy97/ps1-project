@@ -8,6 +8,7 @@ typedef struct Scene Scene;
 
 struct Scene {
 	Layer* layers[3];
+	int number_of_layers;
 	void (* init)(Scene*);
 	void (* add_layer)(Scene*, Layer*);
 	void (* update)(Scene*);

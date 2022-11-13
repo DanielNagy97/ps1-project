@@ -22,7 +22,6 @@ Rect new_rect(void);
 void init_rect2(Rect*, Vector2D, int, int, RGBColor);
 void update_rect(Rect*);
 void cleanup_rect(Rect*);
-
 void move_to_pos(Rect*, Vector2D);
 
 #endif

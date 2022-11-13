@@ -8,6 +8,7 @@ typedef struct Layer Layer;
 
 struct Layer {
 	GameObject* game_objects[10];
+	int number_of_game_objects;
 	void (* init)(Layer*);
 	void (* add_game_object)(Layer*, GameObject*);
 	void (* update)(Layer*);

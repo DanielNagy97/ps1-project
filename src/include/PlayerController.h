@@ -1,8 +1,8 @@
 #ifndef PLAYER_CONTROLLER_H
 #define PLAYER_CONTROLLER_H
 
-#include <display.h>
-#include <libetc.h> // ez kell a pad1p-hoz
+#include <stdlib.h>
+#include <libetc.h>
 #include <controller.h>
 #include <GameObject.h>
 
