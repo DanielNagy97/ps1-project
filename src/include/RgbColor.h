@@ -3,7 +3,8 @@
 
 typedef struct RGBColor RGBColor;
 
-struct RGBColor {
+struct RGBColor
+{
 	int red;
 	int green;
 	int blue;

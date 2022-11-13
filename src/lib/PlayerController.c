@@ -1,7 +1,7 @@
 #include <PlayerController.h>
 
-
-PlayerController new_player_controller(void) {
+PlayerController new_player_controller(void)
+{
 	PlayerController player_controller;
 	player_controller.init = &init_player_controller;
 	player_controller.update = &update_player_controller;
@@ -10,33 +10,40 @@ PlayerController new_player_controller(void) {
 	return player_controller;
 }
 
-void init_player_controller(PlayerController* player_controller, GameObject* player_object) {
+void init_player_controller(PlayerController *player_controller, GameObject *player_object)
+{
 	player_controller->player_object = player_object;
 }
 
-void update_player_controller(PlayerController* player_controller) {
-	GameObject* game_object = player_controller->player_object;
+void update_player_controller(PlayerController *player_controller)
+{
+	GameObject *game_object = player_controller->player_object;
 	update_pad();
 
-	if(padCheck(Pad1Up)) {
+	if (padCheck(Pad1Up))
+	{
 		game_object->direction.y = -1;
 		game_object->velocity.y = game_object->speed;
 	}
-	if(padCheck(Pad1Down)) {
+	if (padCheck(Pad1Down))
+	{
 		game_object->direction.y = 1;
 		game_object->velocity.y = game_object->speed;
 	}
-	if(padCheck(Pad1Left)) {
+	if (padCheck(Pad1Left))
+	{
 		game_object->direction.x = -1;
 		game_object->velocity.x = game_object->speed;
 	}
-	if(padCheck(Pad1Right)) {
+	if (padCheck(Pad1Right))
+	{
 		game_object->direction.x = 1;
 		game_object->velocity.x = game_object->speed;
 	}
 }
 
-void cleanup_player_controller(PlayerController* player_controller) {
+void cleanup_player_controller(PlayerController *player_controller)
+{
 	player_controller->player_object = NULL;
 	player_controller->init = NULL;
 	player_controller->update = NULL;

@@ -3,7 +3,8 @@
 
 typedef struct Dimensions2D Dimensions2D;
 
-struct Dimensions2D {
+struct Dimensions2D
+{
 	int width;
 	int height;
 };

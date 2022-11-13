@@ -3,7 +3,8 @@
 
 typedef struct Vector2D Vector2D;
 
-struct Vector2D {
+struct Vector2D
+{
 	int x;
 	int y;
 };

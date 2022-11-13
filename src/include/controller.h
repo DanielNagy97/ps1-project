@@ -1,7 +1,6 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-
 int	SysPad, SysPadT;
 #define	padCheck(_p_)	(SysPad & (_p_))
 #define	padCheckPressed(_p_)	(SysPadT & (_p_))
