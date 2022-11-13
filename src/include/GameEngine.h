@@ -18,5 +18,6 @@ GameEngine new_game_engine(void);
 void init_game_engine(GameEngine*, Scene*, PlayerController*);
 void update_game_engine(GameEngine*);
 void cleanup_game_engine(GameEngine*);
+void show_debug_text(GameEngine*);
 
 #endif

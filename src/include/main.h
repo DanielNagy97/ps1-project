@@ -10,6 +10,6 @@
 #include <PlayerController.h>
 #include <GameEngine.h>
 
-void initialize();
+void initialize(void);
 
 #endif

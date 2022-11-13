@@ -54,14 +54,14 @@ void update_game_object_position(GameObject* game_object) {
 	if(new_position.x <= 0) {
 		new_position.x = 0;
 	}
-	else if(new_position.x + rect->width >= SCREEN_WIDTH) {
-		new_position.x = SCREEN_WIDTH - rect->width;
+	else if(new_position.x + rect->dimensions.width >= SCREEN_WIDTH) {
+		new_position.x = SCREEN_WIDTH - rect->dimensions.width;
 	}
 	if(new_position.y <= 0) {
 		new_position.y = 0;
 	}
-	else if(new_position.y + rect->height >= SCREEN_HEIGHT) {
-		new_position.y = SCREEN_HEIGHT - rect->height;
+	else if(new_position.y + rect->dimensions.height >= SCREEN_HEIGHT) {
+		new_position.y = SCREEN_HEIGHT - rect->dimensions.height;
 	}
 	
 	rect->position = new_position;
